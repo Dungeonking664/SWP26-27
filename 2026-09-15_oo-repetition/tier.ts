@@ -11,6 +11,9 @@ export class Tier {
 
   // TODO HÜ: vergleicht Zustand (Name + Gewicht), nicht Identität.
   equals(other: Tier): boolean {
+    if (this.name === other.name && this.gewicht === other.gewicht) {
+      return true;
+    }
     return false;
   }
 
