@@ -18,7 +18,9 @@ export class Tier {
   }
 
   // TODO HÜ: erhöht das Gewicht um kg.
-  fuettern(kg: number): void {}
+  fuettern(kg: number): void {
+    this.gewicht += kg;
+  }
 
   toString(): string {
     return `${this.name} (${this.gewicht} kg)`;
