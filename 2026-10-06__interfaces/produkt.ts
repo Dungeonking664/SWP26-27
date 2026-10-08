@@ -8,7 +8,11 @@ export interface Versendbar {
   versandkosten(): number; // in Cent
 }
 
-export class Produkt implements Comparable<Produkt>, Versendbar {
+export interface Benannt {
+  readonly name: string;
+}
+
+export class Produkt implements Comparable<Produkt>, Versendbar, Benannt {
   readonly name: string;
   private preisCent: number;
   private gewichtKg: number;

@@ -1,5 +1,6 @@
 import { assertEquals } from "jsr:@std/assert";
 import { akzeptiereVersendbar, Produkt } from "./produkt.ts";
+import { groesstes } from "./konto.ts";
 
 Deno.test("compareTo vergleicht nach preisCent", () => {
   const billig = new Produkt("USB-Kabel", 500, 0.2);
@@ -29,4 +30,12 @@ Deno.test("Produkt wird nie negativ geboren (Invarianten bleiben)", () => {
   } catch (e) {
     assertEquals((e as Error).message.includes("negativ"), true);
   }
+});
+
+Deno.test("groesstes funktioniert mit Produkt (denselben Aufruf)", () => {
+  const billig = new Produkt("USB-Kabel", 500, 0.2);
+  const teuer = new Produkt("Monitor", 25000, 6);
+  const bestes = groesstes([billig, teuer]);
+  assertEquals(bestes?.name, "Monitor");
+  assertEquals(groesstes([]), undefined);
 });
